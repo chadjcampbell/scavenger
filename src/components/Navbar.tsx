@@ -5,7 +5,7 @@ const Navbar = () => {
   const menuRef = useRef<HTMLInputElement | null>(null);
 
   const closeMenu = () => {
-    const menu = menuRef.current as HTMLInputElement;
+    const menu = menuRef.current;
     menu && (menu.checked = false);
   };
 
