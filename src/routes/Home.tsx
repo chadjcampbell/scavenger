@@ -13,6 +13,7 @@ const Home = () => {
             </p>
           </section>
           <section className={styles.bottom}>
+            {" "}
             <div className={styles.miniCard}>
               <img src="./magnifyingGlass.svg" alt="logo" />
               <h3>Test text</h3>

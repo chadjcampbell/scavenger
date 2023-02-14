@@ -1,4 +1,4 @@
-.home {
+.leaderboard {
   background: rgb(133, 136, 140);
   background: linear-gradient(
     90deg,
@@ -13,7 +13,7 @@
   min-height: 100vh;
 }
 
-.home * {
+.leaderboard * {
   padding: 1rem;
   color: var(--white);
 }
@@ -31,6 +31,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  border-bottom: 5px solid var(--white);
 }
 
 .top h2 {
@@ -39,18 +41,21 @@
 
 .bottom {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
-.miniCard {
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
-.bottom img {
-  max-width: 80px;
+table {
+  border-collapse: collapse;
+}
+
+tr {
+  padding: 0;
+}
+
+td {
+  text-align: left;
+  border-bottom: 1px solid var(--white);
 }
