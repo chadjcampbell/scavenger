@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
+import "./styles/index.css";
 import Home from "./routes/Home";
 import Leaderboard from "./routes/Leaderboard";
 import Play from "./routes/Play";

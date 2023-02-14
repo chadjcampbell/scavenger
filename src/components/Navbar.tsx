@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import styles from "../styles/Navbar.module.css";
 
 const Navbar = () => {
   const menuRef = useRef<HTMLInputElement | null>(null);
@@ -10,23 +11,23 @@ const Navbar = () => {
   };
 
   return (
-    <header className="header">
-      <Link to={`/`} className="logo">
+    <header className={styles.header}>
+      <Link to={`/`} className={styles.logo}>
         <img src="./magnifyingGlass.svg" alt="logo" />
       </Link>
 
       <input
         ref={menuRef}
-        className="side-menu"
+        className={styles.sideMenu}
         type="checkbox"
         id="side-menu"
       />
-      <label className="hamb" htmlFor="side-menu">
-        <span className="hamb-line"></span>
+      <label className={styles.hamb} htmlFor="side-menu">
+        <span className={styles.hambLine}></span>
       </label>
 
-      <nav className="nav">
-        <ul className="menu">
+      <nav className={styles.nav}>
+        <ul className={styles.menu}>
           <li>
             <Link onClick={closeMenu} to={`/`}>
               Home
