@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <header className={styles.header}>
-      <Link to={`/`} className={styles.logo}>
+      <Link onClick={closeMenu} to={`/`} className={styles.logo}>
         <img src="./magnifyingGlass.svg" alt="logo" />
       </Link>
 
