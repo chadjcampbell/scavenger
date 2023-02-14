@@ -28,7 +28,7 @@ const Navbar = () => {
       <nav className="nav">
         <ul className="menu">
           <li>
-            <Link onClick={closeMenu} to={`/home`}>
+            <Link onClick={closeMenu} to={`/`}>
               Home
             </Link>
           </li>
