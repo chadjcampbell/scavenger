@@ -1,0 +1,7 @@
+.play {
+  background-color: var(--black);
+}
+
+.play img {
+  position: absolute;
+}

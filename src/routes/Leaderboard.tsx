@@ -17,7 +17,7 @@ const Leaderboard = () => {
           <section className={styles.bottom}>
             <table>
               {fakeData.map((data) => (
-                <tr>
+                <tr key={data.name}>
                   <td>
                     <h2>{data.name}</h2>
                   </td>
