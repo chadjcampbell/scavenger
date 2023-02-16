@@ -104,6 +104,21 @@
   border-radius: 50%;
 }
 
+.nameAndScore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score {
+  padding: 0.5rem;
+  color: var(--black);
+  background-color: var(--white);
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
 @media (max-width: 768px) {
   .scoreboard {
     top: 75%;

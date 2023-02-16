@@ -2,13 +2,15 @@ import styles from "../styles/Play.module.css";
 
 type ScoreboardProps = {
   name: string;
+  score: string;
 };
 
-const Scoreboard = ({ name }: ScoreboardProps) => {
+const Scoreboard = ({ name, score }: ScoreboardProps) => {
   return (
     <div className={styles.scoreboard}>
       <section className={styles.nameAndScore}>
-        <h2>{name}</h2>
+        <h2 className={styles.name}>{name}</h2>
+        <h2 className={styles.score}>{score}</h2>
       </section>
       <section className={styles.images}>
         <div className={styles.miniCard}>

@@ -12,7 +12,7 @@ const Modal = ({ setModalIsOpen, modalMessage, setName }: ModalProps) => {
     e.preventDefault();
     setModalIsOpen(false);
     const form = e.target as HTMLFormElement;
-    setName(form.userName.value);
+    setName(form.scoreboardName.value);
   };
 
   return (
@@ -21,13 +21,15 @@ const Modal = ({ setModalIsOpen, modalMessage, setName }: ModalProps) => {
         <h2>{modalMessage}</h2>
         <form onSubmit={(e: FormEvent<HTMLFormElement>) => handleSubmit(e)}>
           <input
+            autoComplete="off"
+            autoFocus
             className={styles.modalInput}
             type="text"
             minLength={2}
             maxLength={20}
             placeholder="Enter Name"
             required
-            id="userName"
+            id="scoreboardName"
           />
           <button type="submit" className={styles.modalBtn}>
             Play!
