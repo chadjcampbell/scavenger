@@ -1,7 +1,11 @@
 .play {
   background-color: var(--black);
+  height: inherit;
+  width: inherit;
+  position: relative;
 }
 
 .play img {
-  position: absolute;
+  max-width: 100%;
+  height: auto;
 }
