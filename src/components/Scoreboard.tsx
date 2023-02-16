@@ -1,16 +1,19 @@
 import styles from "../styles/Play.module.css";
+import { Stopwatch } from "./Stopwatch";
 
 type ScoreboardProps = {
   name: string;
-  score: string;
+  running: boolean;
 };
 
-const Scoreboard = ({ name, score }: ScoreboardProps) => {
+const Scoreboard = ({ name, running }: ScoreboardProps) => {
   return (
     <div className={styles.scoreboard}>
       <section className={styles.nameAndScore}>
         <h2 className={styles.name}>{name}</h2>
-        <h2 className={styles.score}>{score}</h2>
+        <h2 className={styles.score}>
+          <Stopwatch running={running} />
+        </h2>
       </section>
       <section className={styles.images}>
         <div className={styles.miniCard}>
