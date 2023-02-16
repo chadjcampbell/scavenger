@@ -30,7 +30,12 @@ export function ImageMagnifier({
     >
       <img
         src={src}
-        style={{ height: height, width: width }}
+        style={{
+          height: height,
+          width: width,
+          position: "relative",
+          zIndex: 0,
+        }}
         onMouseEnter={(e) => {
           // update image size and turn-on magnifier
           const elem = e.currentTarget;
