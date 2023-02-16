@@ -18,7 +18,7 @@
 }
 
 .card {
-  max-width: 600px;
+  max-width: 800px;
   background-color: var(--black);
   border-radius: 1rem;
   box-shadow: 5px 5px 10px 0px var(--white);
@@ -51,5 +51,6 @@
 }
 
 .bottom img {
-  max-width: 80px;
+  width: 150px;
+  border-radius: 50%;
 }

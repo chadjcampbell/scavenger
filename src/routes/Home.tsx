@@ -6,25 +6,27 @@ const Home = () => {
       <div className={styles.card}>
         <article>
           <section className={styles.top}>
-            <h2>Google Chrome</h2>
+            <h2>Welcome to Scavenger!</h2>
             <p>
-              Google Chrome is a web browser developed by Google, released in
-              2008. Chrome is the world's most popular web browser today!
+              It will be a race against the clock to find the three characters
+              below in the Star Wars-themed Where's Waldo-style image. Enter
+              your name and compete for a spot on the global leaderboard.
+              Navigate to the Play section in the menu above to get started!
             </p>
           </section>
           <section className={styles.bottom}>
             {" "}
             <div className={styles.miniCard}>
-              <img src="./magnifyingGlass.svg" alt="logo" />
-              <h3>Test text</h3>
+              <img src="./jabba.png" alt="logo" />
+              <h3>Jabba</h3>
             </div>
             <div className={styles.miniCard}>
-              <img src="./magnifyingGlass.svg" alt="logo" />
-              <h3>Test text</h3>
+              <img src="./lando.png" alt="logo" />
+              <h3>Lando</h3>
             </div>
             <div className={styles.miniCard}>
-              <img src="./magnifyingGlass.svg" alt="logo" />
-              <h3>Test text</h3>
+              <img src="./yoda.png" alt="logo" />
+              <h3>Yoda</h3>
             </div>
           </section>
         </article>
