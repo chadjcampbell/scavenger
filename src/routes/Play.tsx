@@ -30,8 +30,12 @@ const Play = () => {
   }, []);
 
   const handleDropdown = () => {
-    setDropdownDisplay(!dropdownDisplay);
-    setDropdownPosition(mousePos);
+    if (!modalIsOpen && !dropdownDisplay) {
+      setDropdownDisplay(true);
+      setDropdownPosition(mousePos);
+    } else {
+      setDropdownDisplay(false);
+    }
   };
 
   return (
@@ -46,12 +50,11 @@ const Play = () => {
         />
       )}
       <ImageMagnifier width="100%" src="./sw-wheres-waldo.jpg" />
-      {!modalIsOpen && (
-        <Dropdown
-          dropdownPosition={dropdownPosition}
-          dropdownDisplay={dropdownDisplay}
-        />
-      )}
+
+      <Dropdown
+        dropdownPosition={dropdownPosition}
+        dropdownDisplay={dropdownDisplay}
+      />
     </div>
   );
 };
