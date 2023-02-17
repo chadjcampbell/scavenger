@@ -1,4 +1,4 @@
-import { MouseEvent, useEffect, useState } from "react";
+import { MouseEvent, useState } from "react";
 import Dropdown from "../components/Dropdown";
 import { ImageMagnifier } from "../components/ImageMagnifier";
 import Modal from "../components/Modal";
@@ -13,21 +13,7 @@ const Play = () => {
   const [modalMessage, setModalMessage] = useState(
     "Enter your name for the leaderboard"
   );
-
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [dropdownPosition, setDropdownPosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: { clientX: any; clientY: any }) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
 
   const handleDropdown = (e: MouseEvent) => {
     if (!modalIsOpen && !dropdownDisplay) {
@@ -55,7 +41,6 @@ const Play = () => {
         />
       )}
       <ImageMagnifier width="100%" src="./sw-wheres-waldo.jpg" />
-
       <Dropdown
         dropdownPosition={dropdownPosition}
         dropdownDisplay={dropdownDisplay}
