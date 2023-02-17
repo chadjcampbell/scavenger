@@ -2,7 +2,7 @@ import styles from "../styles/Play.module.css";
 
 type DropdownProps = {
   dropdownDisplay: boolean;
-  dropdownPosition: { x: string; y: string };
+  dropdownPosition: { x: number; y: number };
 };
 
 export const Dropdown = ({

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import Dropdown from "../components/Dropdown";
 import { ImageMagnifier } from "../components/ImageMagnifier";
 import Modal from "../components/Modal";
@@ -14,8 +14,8 @@ const Play = () => {
     "Enter your name for the leaderboard"
   );
 
-  const [mousePos, setMousePos] = useState({ x: "", y: "" });
-  const [dropdownPosition, setDropdownPosition] = useState({ x: "", y: "" });
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [dropdownPosition, setDropdownPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMouseMove = (e: { clientX: any; clientY: any }) => {
@@ -29,17 +29,22 @@ const Play = () => {
     };
   }, []);
 
-  const handleDropdown = () => {
+  const handleDropdown = (e: MouseEvent) => {
     if (!modalIsOpen && !dropdownDisplay) {
+      const elem = e.currentTarget;
+      const { top, left } = elem.getBoundingClientRect();
+      // calculate cursor position on the image
+      const x = e.pageX - left + 20 - window.pageXOffset;
+      const y = e.pageY - top - window.pageYOffset;
       setDropdownDisplay(true);
-      setDropdownPosition(mousePos);
+      setDropdownPosition({ x: x, y: y });
     } else {
       setDropdownDisplay(false);
     }
   };
 
   return (
-    <div onClick={handleDropdown} className={styles.play}>
+    <div onClick={(e) => handleDropdown(e)} className={styles.play}>
       <Scoreboard running={running} name={name} />
       {modalIsOpen && (
         <Modal

@@ -76,7 +76,7 @@ export function ImageMagnifier({
           opacity: "1", // reduce opacity so you can verify position
           border: "1px solid lightgray",
           borderRadius: "50%",
-          backgroundColor: "white",
+          backgroundColor: "var(--black)",
           backgroundImage: `url('${src}')`,
           backgroundRepeat: "no-repeat",
 
