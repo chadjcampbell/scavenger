@@ -16,16 +16,18 @@ const Leaderboard = () => {
           </section>
           <section className={styles.bottom}>
             <table>
-              {fakeData.map((data) => (
-                <tr key={data.name}>
-                  <td>
-                    <h2>{data.name}</h2>
-                  </td>
-                  <td>
-                    <h2>{data.time}</h2>
-                  </td>
-                </tr>
-              ))}
+              <tbody>
+                {fakeData.map((data) => (
+                  <tr key={data.name}>
+                    <td>
+                      <h2>{data.name}</h2>
+                    </td>
+                    <td>
+                      <h2>{data.time}</h2>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
           </section>
         </article>

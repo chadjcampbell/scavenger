@@ -4,6 +4,9 @@ import { Stopwatch } from "./Stopwatch";
 type ScoreboardProps = {
   name: string;
   running: boolean;
+  yodaFound: boolean;
+  landoFound: boolean;
+  jabbaFound: boolean;
 };
 
 const Scoreboard = ({ name, running }: ScoreboardProps) => {
