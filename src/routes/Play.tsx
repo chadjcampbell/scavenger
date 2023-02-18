@@ -55,8 +55,7 @@ const Play = () => {
       setDropdownDisplay(true);
       setDropdownPosition({ x: x, y: y });
       console.log(dropdownPosition);
-      console.log(imageRef.current?.offsetHeight);
-      console.log(imageRef.current?.offsetWidth);
+      console.log(yodaPosition);
     } else {
       setDropdownDisplay(false);
     }

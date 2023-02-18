@@ -1,4 +1,5 @@
 import styles from "../styles/Play.module.css";
+import { percentDiff } from "../utils/percentDiff";
 
 type DropdownProps = {
   dropdownDisplay: boolean;
@@ -13,7 +14,16 @@ type DropdownProps = {
 export const Dropdown = ({
   dropdownDisplay,
   dropdownPosition,
+  yodaPosition,
+  jabbaPosition,
+  landoPosition,
+  setYodaFound,
+  setJabbaFound,
+  setLandoFound,
 }: DropdownProps) => {
+  const handleJabba = () => {};
+  const handleLando = () => {};
+  const handleYoda = () => {};
   return (
     <ul
       style={{
@@ -24,13 +34,13 @@ export const Dropdown = ({
       }}
       className={styles.dropdown}
     >
-      <li className={styles.dropdownItem} value="jabba">
+      <li onClick={handleJabba} className={styles.dropdownItem} value="jabba">
         Jabba
       </li>
-      <li className={styles.dropdownItem} value="lando">
+      <li onClick={handleLando} className={styles.dropdownItem} value="lando">
         Lando
       </li>
-      <li className={styles.dropdownItem} value="yoda">
+      <li onClick={handleYoda} className={styles.dropdownItem} value="yoda">
         Yoda
       </li>
     </ul>
