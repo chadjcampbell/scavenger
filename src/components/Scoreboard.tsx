@@ -7,6 +7,7 @@ type ScoreboardProps = {
   yodaFound: boolean;
   landoFound: boolean;
   jabbaFound: boolean;
+  setTotalTime: (arg0: string) => void;
 };
 
 const Scoreboard = ({
@@ -15,13 +16,14 @@ const Scoreboard = ({
   yodaFound,
   landoFound,
   jabbaFound,
+  setTotalTime,
 }: ScoreboardProps) => {
   return (
     <div className={styles.scoreboard}>
       <section className={styles.nameAndScore}>
         <h2 className={styles.name}>{name}</h2>
         <h2 className={styles.score}>
-          <Stopwatch running={running} />
+          <Stopwatch setTotalTime={setTotalTime} running={running} />
         </h2>
       </section>
       <section className={styles.images}>

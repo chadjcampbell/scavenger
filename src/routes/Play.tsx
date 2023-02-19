@@ -16,6 +16,7 @@ const Play = () => {
   const [jabbaFound, setJabbaFound] = useState(false);
   const [landoFound, setLandoFound] = useState(false);
 
+  const [totalTime, setTotalTime] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(true);
   const [name, setName] = useState("");
   const [running, setRunning] = useState(false);
@@ -45,6 +46,16 @@ const Play = () => {
       });
   }, [window.innerWidth]);
 
+  //any time a character is found, check for win
+  useEffect(() => {
+    if (yodaFound && jabbaFound && landoFound) {
+      setRunning(false);
+      setModalMessage("You win!");
+      setModalIsOpen(true);
+    }
+  }, [jabbaFound, yodaFound, landoFound]);
+
+  //open the dropdown if it isn't already open and modal isn't open
   const handleDropdown = (e: MouseEvent) => {
     if (!modalIsOpen && !dropdownDisplay) {
       const elem = e.currentTarget;
@@ -67,6 +78,7 @@ const Play = () => {
         jabbaFound={jabbaFound}
         running={running}
         name={name}
+        setTotalTime={setTotalTime}
       />
       {modalIsOpen && (
         <Modal
@@ -74,6 +86,7 @@ const Play = () => {
           setName={setName}
           setModalIsOpen={setModalIsOpen}
           modalMessage={modalMessage}
+          totalTime={totalTime}
         />
       )}
       <ImageMagnifier
