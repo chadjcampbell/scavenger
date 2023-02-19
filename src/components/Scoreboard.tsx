@@ -9,7 +9,13 @@ type ScoreboardProps = {
   jabbaFound: boolean;
 };
 
-const Scoreboard = ({ name, running }: ScoreboardProps) => {
+const Scoreboard = ({
+  name,
+  running,
+  yodaFound,
+  landoFound,
+  jabbaFound,
+}: ScoreboardProps) => {
   return (
     <div className={styles.scoreboard}>
       <section className={styles.nameAndScore}>
@@ -20,15 +26,27 @@ const Scoreboard = ({ name, running }: ScoreboardProps) => {
       </section>
       <section className={styles.images}>
         <div className={styles.miniCard}>
-          <img src="./jabba.png" alt="logo" />
+          {jabbaFound ? (
+            <img src="./greenCheck.png" alt="logo" />
+          ) : (
+            <img src="./jabba.png" alt="logo" />
+          )}
           <h3>Jabba</h3>
         </div>
         <div className={styles.miniCard}>
-          <img src="./lando.png" alt="logo" />
+          {landoFound ? (
+            <img src="./greenCheck.png" alt="logo" />
+          ) : (
+            <img src="./lando.png" alt="logo" />
+          )}
           <h3>Lando</h3>
         </div>
         <div className={styles.miniCard}>
-          <img src="./yoda.png" alt="logo" />
+          {yodaFound ? (
+            <img src="./greenCheck.png" alt="logo" />
+          ) : (
+            <img src="./yoda.png" alt="logo" />
+          )}
           <h3>Yoda</h3>
         </div>
       </section>

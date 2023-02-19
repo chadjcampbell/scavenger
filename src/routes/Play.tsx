@@ -49,7 +49,7 @@ const Play = () => {
     if (!modalIsOpen && !dropdownDisplay) {
       const elem = e.currentTarget;
       const { top, left } = elem.getBoundingClientRect();
-      // calculate cursor position on the image
+      // calculate cursor position on the image, offset dropdown to the right
       const x = e.pageX - left + 20 - window.pageXOffset;
       const y = e.pageY - top - window.pageYOffset;
       setDropdownDisplay(true);
