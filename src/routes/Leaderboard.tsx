@@ -16,7 +16,9 @@ const Leaderboard = () => {
     { name: "Jordan", time: "2m15s" },
     { name: "Ed", time: "3m43s" },
   ];
-  const [leaders, setLeaders] = useState<DocumentData[]>();
+  const [leaders, setLeaders] = useState<DocumentData[] | null>(null);
+  const [loading, setLoading] = useState(true);
+
   let tempLeaders: DocumentData[] = [];
   useEffect(() => {
     const fetchData = async () => {
@@ -30,6 +32,10 @@ const Leaderboard = () => {
     fetchData().then(() => {
       setLeaders(tempLeaders);
     });
+    setTimeout(() => {
+      console.log(leaders);
+      setLoading(false);
+    }, 1000);
   }, []);
 
   return (
@@ -42,8 +48,10 @@ const Leaderboard = () => {
           <section className={styles.bottom}>
             <table>
               <tbody>
-                {leaders &&
-                  leaders.map((data) => (
+                {loading ? (
+                  <div>Loading...</div>
+                ) : (
+                  leaders?.map((data) => (
                     <tr key={data.name}>
                       <td>
                         <h2>{data.name}</h2>
@@ -52,7 +60,8 @@ const Leaderboard = () => {
                         <h2>{data.time}</h2>
                       </td>
                     </tr>
-                  ))}
+                  ))
+                )}
               </tbody>
             </table>
           </section>
