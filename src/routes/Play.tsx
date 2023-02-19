@@ -16,7 +16,7 @@ const Play = () => {
   const [jabbaFound, setJabbaFound] = useState(false);
   const [landoFound, setLandoFound] = useState(false);
 
-  const [totalTime, setTotalTime] = useState("");
+  const [totalTime, setTotalTime] = useState("00:00");
   const [modalIsOpen, setModalIsOpen] = useState(true);
   const [name, setName] = useState("");
   const [running, setRunning] = useState(false);
@@ -44,13 +44,13 @@ const Play = () => {
         x: imageRef.current.offsetWidth * 0.395,
         y: imageRef.current?.offsetHeight * 0.63,
       });
-  }, [window.innerWidth]);
+  }, [modalIsOpen]);
 
   //any time a character is found, check for win
   useEffect(() => {
     if (yodaFound && jabbaFound && landoFound) {
       setRunning(false);
-      setModalMessage("You win!");
+      setModalMessage("Well done!");
       setModalIsOpen(true);
     }
   }, [jabbaFound, yodaFound, landoFound]);
@@ -83,6 +83,7 @@ const Play = () => {
       {modalIsOpen && (
         <Modal
           setRunning={setRunning}
+          name={name}
           setName={setName}
           setModalIsOpen={setModalIsOpen}
           modalMessage={modalMessage}

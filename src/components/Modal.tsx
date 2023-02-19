@@ -5,6 +5,7 @@ type ModalProps = {
   setModalIsOpen: (arg0: boolean) => void;
   modalMessage: string;
   setName: (arg0: string) => void;
+  name: string;
   setRunning: (arg0: boolean) => void;
   totalTime: string;
 };
@@ -12,6 +13,7 @@ type ModalProps = {
 const Modal = ({
   setModalIsOpen,
   modalMessage,
+  name,
   setName,
   setRunning,
   totalTime,
@@ -28,7 +30,13 @@ const Modal = ({
     <div className={styles.modal}>
       <div className={styles.modalContent}>
         <h2>{modalMessage}</h2>
-        {totalTime !== "00:00" && <h2>{totalTime}</h2>}
+        {totalTime !== "00:00" && (
+          <>
+            <h2>Name: {name}</h2>
+            <h2>Time: {totalTime}</h2>
+            <button className={styles.modalBtn}>Submit to Leaderboard</button>
+          </>
+        )}
         {totalTime === "00:00" && (
           <form onSubmit={(e: FormEvent<HTMLFormElement>) => handleSubmit(e)}>
             <input
