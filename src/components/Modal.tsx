@@ -39,7 +39,7 @@ const Modal = ({
   };
   const updateLeaderboard = async () => {
     await updateDoc(doc(db, "myApp", "leaderboard"), {
-      leader: arrayUnion({
+      leaders: arrayUnion({
         name,
         totalTime,
       }),

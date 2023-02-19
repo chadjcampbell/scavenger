@@ -4,12 +4,12 @@ import { db } from "../firebase";
 import { useEffect, useState } from "react";
 
 const Leaderboard = () => {
-  const [leaders, setLeaders] = useState<DocumentData | undefined>();
+  const [leaderboard, setLeaderboard] = useState<DocumentData | undefined>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsub = onSnapshot(doc(db, "myApp", "leaderboard"), (doc) => {
-      setLeaders(doc.data());
+      setLeaderboard(doc.data());
       setLoading(false);
     });
     return () => {
@@ -32,7 +32,7 @@ const Leaderboard = () => {
                     <td>Loading...</td>
                   </tr>
                 ) : (
-                  leaders?.leader.map(
+                  leaderboard?.leaders.map(
                     (data: { name: string; totalTime: string }) => (
                       <tr key={data.name}>
                         <td>
