@@ -1,5 +1,8 @@
 import { FormEvent, SyntheticEvent } from "react";
 import styles from "../styles/Play.module.css";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 type ModalProps = {
   setModalIsOpen: (arg0: boolean) => void;
@@ -18,12 +21,23 @@ const Modal = ({
   setRunning,
   totalTime,
 }: ModalProps) => {
+  const navigate = useNavigate();
+
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
     setModalIsOpen(false);
     const form = e.target as HTMLFormElement;
     setName(form.scoreboardName.value);
     setRunning(true);
+  };
+  const updateLeaderboard = async () => {
+    // Add a new document to firestore db with auto generated id.
+    const docRef = await addDoc(collection(db, "leaderboard"), {
+      name: name,
+      time: totalTime,
+    }).then(() => {
+      navigate("/leaderboard");
+    });
   };
 
   return (
@@ -34,7 +48,9 @@ const Modal = ({
           <>
             <h2>Name: {name}</h2>
             <h2>Time: {totalTime}</h2>
-            <button className={styles.modalBtn}>Submit to Leaderboard</button>
+            <button onClick={updateLeaderboard} className={styles.modalBtn}>
+              Submit to Leaderboard
+            </button>
           </>
         )}
         {totalTime === "00:00" && (
