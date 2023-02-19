@@ -54,8 +54,6 @@ const Play = () => {
       const y = e.pageY - top - window.pageYOffset;
       setDropdownDisplay(true);
       setDropdownPosition({ x: x, y: y });
-      console.log(dropdownPosition);
-      console.log(yodaPosition);
     } else {
       setDropdownDisplay(false);
     }
@@ -63,39 +61,6 @@ const Play = () => {
 
   return (
     <div onClick={(e) => handleDropdown(e)} className={styles.play}>
-      {/*TODO - use these + imageRef to find responsive value of characters */}
-      {/* <div style={{ position: "absolute", zIndex: "5" }}>
-        <div
-          style={{
-            position: "absolute",
-            left: jabbaPosition.x + "px",
-            top: jabbaPosition.y + "px",
-            color: "white",
-          }}
-        >
-          o
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            left: yodaPosition.x + "px",
-            top: yodaPosition.y + "px",
-            color: "white",
-          }}
-        >
-          o
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            left: landoPosition.x + "px",
-            top: landoPosition.y + "px",
-            color: "white",
-          }}
-        >
-          o
-        </div>
-      </div> */}
       <Scoreboard
         yodaFound={yodaFound}
         landoFound={landoFound}

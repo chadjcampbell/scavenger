@@ -1,5 +1,5 @@
 import styles from "../styles/Play.module.css";
-import { percentDiff } from "../utils/percentDiff";
+import { closeEnough } from "../utils/closeEnough";
 
 type DropdownProps = {
   dropdownDisplay: boolean;
@@ -21,9 +21,22 @@ export const Dropdown = ({
   setJabbaFound,
   setLandoFound,
 }: DropdownProps) => {
-  const handleJabba = () => {};
-  const handleLando = () => {};
-  const handleYoda = () => {};
+  const handleJabba = () => {
+    if (closeEnough(jabbaPosition, dropdownPosition)) {
+      setJabbaFound(true);
+    }
+  };
+  const handleLando = () => {
+    if (closeEnough(landoPosition, dropdownPosition)) {
+      setLandoFound(true);
+    }
+  };
+  const handleYoda = () => {
+    if (closeEnough(yodaPosition, dropdownPosition)) {
+      setYodaFound(true);
+    }
+  };
+
   return (
     <ul
       style={{
