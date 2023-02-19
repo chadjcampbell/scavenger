@@ -9,7 +9,7 @@ export const Stopwatch = ({ running, setTotalTime }: StopwatchProps) => {
   const [time, setTime] = useState(500);
 
   useEffect(() => {
-    let interval: number | undefined;
+    let interval: ReturnType<typeof setInterval> | undefined;
     if (running) {
       interval = setInterval(() => {
         setTime((prevTime) => prevTime + 1000);
