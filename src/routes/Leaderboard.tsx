@@ -1,41 +1,20 @@
 import styles from "../styles/Leaderboard.module.css";
-import {
-  collection,
-  doc,
-  DocumentData,
-  getDocs,
-  onSnapshot,
-} from "firebase/firestore";
+import { doc, DocumentData, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Leaderboard = () => {
-  const fakeData = [
-    { name: "Chad", time: "1m43s" },
-    { name: "Bill", time: "2m56s" },
-    { name: "Jordan", time: "2m15s" },
-    { name: "Ed", time: "3m43s" },
-  ];
-  const [leaders, setLeaders] = useState<DocumentData[] | null>(null);
+  const [leaders, setLeaders] = useState<DocumentData | undefined>();
   const [loading, setLoading] = useState(true);
 
-  let tempLeaders: DocumentData[] = [];
   useEffect(() => {
-    const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(db, "leaderboard"));
-
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        tempLeaders?.push(doc.data());
-      });
-    };
-    fetchData().then(() => {
-      setLeaders(tempLeaders);
-    });
-    setTimeout(() => {
-      console.log(leaders);
+    const unsub = onSnapshot(doc(db, "myApp", "leaderboard"), (doc) => {
+      setLeaders(doc.data());
       setLoading(false);
-    }, 1000);
+    });
+    return () => {
+      unsub();
+    };
   }, []);
 
   return (
@@ -49,18 +28,22 @@ const Leaderboard = () => {
             <table>
               <tbody>
                 {loading ? (
-                  <div>Loading...</div>
+                  <tr>
+                    <td>Loading...</td>
+                  </tr>
                 ) : (
-                  leaders?.map((data) => (
-                    <tr key={data.name}>
-                      <td>
-                        <h2>{data.name}</h2>
-                      </td>
-                      <td>
-                        <h2>{data.time}</h2>
-                      </td>
-                    </tr>
-                  ))
+                  leaders?.leader.map(
+                    (data: { name: string; totalTime: string }) => (
+                      <tr key={data.name}>
+                        <td>
+                          <h2>{data.name}</h2>
+                        </td>
+                        <td>
+                          <h2>{data.totalTime}</h2>
+                        </td>
+                      </tr>
+                    )
+                  )
                 )}
               </tbody>
             </table>

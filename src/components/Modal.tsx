@@ -1,6 +1,13 @@
 import { FormEvent, SyntheticEvent } from "react";
 import styles from "../styles/Play.module.css";
-import { collection, addDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  arrayUnion,
+  doc,
+  Timestamp,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
@@ -31,10 +38,11 @@ const Modal = ({
     setRunning(true);
   };
   const updateLeaderboard = async () => {
-    // Add a new document to firestore db with auto generated id.
-    const docRef = await addDoc(collection(db, "leaderboard"), {
-      name: name,
-      time: totalTime,
+    await updateDoc(doc(db, "myApp", "leaderboard"), {
+      leader: arrayUnion({
+        name,
+        totalTime,
+      }),
     }).then(() => {
       navigate("/leaderboard");
     });
