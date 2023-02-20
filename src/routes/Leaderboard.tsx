@@ -3,6 +3,8 @@ import { doc, DocumentData, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
 import { useEffect, useState } from "react";
 
+type userInfo = { name: string; totalTime: string };
+
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState<DocumentData | undefined>();
   const [loading, setLoading] = useState(true);
@@ -32,8 +34,12 @@ const Leaderboard = () => {
                     <td>Loading...</td>
                   </tr>
                 ) : (
-                  leaderboard?.leaders.map(
-                    (data: { name: string; totalTime: string }) => (
+                  leaderboard?.leaders
+                    .sort(
+                      (l1: userInfo, l2: userInfo) =>
+                        l1.totalTime - l2.totalTime
+                    )
+                    .map((data: userInfo) => (
                       <tr key={data.name}>
                         <td>
                           <h2>{data.name}</h2>
@@ -42,8 +48,7 @@ const Leaderboard = () => {
                           <h2>{data.totalTime}</h2>
                         </td>
                       </tr>
-                    )
-                  )
+                    ))
                 )}
               </tbody>
             </table>
