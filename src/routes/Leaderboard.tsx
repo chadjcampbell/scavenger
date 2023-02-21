@@ -1,7 +1,14 @@
 import styles from "../styles/Leaderboard.module.css";
 import { doc, DocumentData, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
-import { useEffect, useState } from "react";
+import {
+  JSXElementConstructor,
+  ReactElement,
+  ReactFragment,
+  ReactPortal,
+  useEffect,
+  useState,
+} from "react";
 
 type userInfo = { name: string; totalTime: string };
 
@@ -42,8 +49,11 @@ const Leaderboard = () => {
                 ) : (
                   leaderboard?.leaders
                     .sort(sortLeaders)
-                    .map((data: userInfo) => (
+                    .map((data: userInfo, index: number) => (
                       <tr key={data.name}>
+                        <td>
+                          <h2>{`#${index + 1}`}</h2>
+                        </td>
                         <td>
                           <h2>{data.name}</h2>
                         </td>
