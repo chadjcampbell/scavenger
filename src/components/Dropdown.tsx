@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "../styles/Play.module.css";
 import { closeEnough } from "../utils/closeEnough";
 
@@ -10,6 +11,7 @@ type DropdownProps = {
   setYodaFound: (arg0: boolean) => void;
   setJabbaFound: (arg0: boolean) => void;
   setLandoFound: (arg0: boolean) => void;
+  setDropdownDisplay: (arg0: boolean) => void;
 };
 export const Dropdown = ({
   dropdownDisplay,
@@ -20,24 +22,55 @@ export const Dropdown = ({
   setYodaFound,
   setJabbaFound,
   setLandoFound,
+  setDropdownDisplay,
 }: DropdownProps) => {
+  const [tryAgain, setTryAgain] = useState(false);
+
+  const displayTryAgain = () => {
+    setDropdownDisplay(true);
+    setTryAgain(true);
+
+    setTimeout(() => {
+      setDropdownDisplay(false);
+      setTryAgain(false);
+    }, 2000);
+  };
+
   const handleJabba = () => {
     if (closeEnough(jabbaPosition, dropdownPosition)) {
       setJabbaFound(true);
+    } else {
+      displayTryAgain();
     }
   };
   const handleLando = () => {
     if (closeEnough(landoPosition, dropdownPosition)) {
       setLandoFound(true);
+    } else {
+      displayTryAgain();
     }
   };
   const handleYoda = () => {
     if (closeEnough(yodaPosition, dropdownPosition)) {
       setYodaFound(true);
+    } else {
+      displayTryAgain();
     }
   };
 
-  return (
+  return tryAgain ? (
+    <ul
+      style={{
+        display: "block",
+        position: "absolute",
+        left: dropdownPosition.x + "px",
+        top: dropdownPosition.y + "px",
+      }}
+      className={styles.dropdown}
+    >
+      <li>Try again</li>
+    </ul>
+  ) : (
     <ul
       style={{
         display: dropdownDisplay ? "block" : "none",

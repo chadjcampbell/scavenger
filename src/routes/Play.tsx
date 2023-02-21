@@ -108,6 +108,7 @@ const Play = () => {
         setYodaFound={setYodaFound}
         setJabbaFound={setJabbaFound}
         setLandoFound={setLandoFound}
+        setDropdownDisplay={setDropdownDisplay}
       />
     </div>
   );
