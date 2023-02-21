@@ -19,6 +19,12 @@ const Leaderboard = () => {
     };
   }, []);
 
+  const sortLeaders = (a: userInfo, b: userInfo) => {
+    const aNumTime = Number(a.totalTime.replace(":", ""));
+    const bNumTime = Number(b.totalTime.replace(":", ""));
+    return aNumTime - bNumTime;
+  };
+
   return (
     <div className={styles.leaderboard}>
       <div className={styles.card}>
@@ -35,10 +41,7 @@ const Leaderboard = () => {
                   </tr>
                 ) : (
                   leaderboard?.leaders
-                    .sort(
-                      (l1: userInfo, l2: userInfo) =>
-                        l1.totalTime - l2.totalTime
-                    )
+                    .sort(sortLeaders)
                     .map((data: userInfo) => (
                       <tr key={data.name}>
                         <td>
