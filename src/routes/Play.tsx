@@ -41,8 +41,8 @@ const Play = () => {
       });
     imageRef.current &&
       setLandoPosition({
-        x: imageRef.current.offsetWidth * 0.395,
-        y: imageRef.current?.offsetHeight * 0.63,
+        x: imageRef.current.offsetWidth * 0.43,
+        y: imageRef.current?.offsetHeight * 0.65,
       });
   }, [modalIsOpen]);
 
@@ -72,14 +72,48 @@ const Play = () => {
 
   return (
     <div onClick={(e) => handleDropdown(e)} className={styles.play}>
-      <Scoreboard
-        yodaFound={yodaFound}
-        landoFound={landoFound}
-        jabbaFound={jabbaFound}
-        running={running}
-        name={name}
-        setTotalTime={setTotalTime}
-      />
+      {yodaFound && (
+        <div
+          style={{
+            display: "block",
+            position: "absolute",
+            zIndex: 1,
+            left: yodaPosition.x + "px",
+            top: yodaPosition.y + "px",
+          }}
+          className={styles.found}
+        >
+          Yoda
+        </div>
+      )}
+      {landoFound && (
+        <div
+          style={{
+            display: "block",
+            position: "absolute",
+            zIndex: 1,
+            left: landoPosition.x + "px",
+            top: landoPosition.y + "px",
+          }}
+          className={styles.found}
+        >
+          Lando
+        </div>
+      )}
+      {jabbaFound && (
+        <div
+          style={{
+            display: "block",
+            position: "absolute",
+            zIndex: 1,
+            left: jabbaPosition.x + "px",
+            top: jabbaPosition.y + "px",
+          }}
+          className={styles.found}
+        >
+          Jabba
+        </div>
+      )}
       {modalIsOpen && (
         <Modal
           setRunning={setRunning}
@@ -90,6 +124,14 @@ const Play = () => {
           totalTime={totalTime}
         />
       )}
+      <Scoreboard
+        yodaFound={yodaFound}
+        landoFound={landoFound}
+        jabbaFound={jabbaFound}
+        running={running}
+        name={name}
+        setTotalTime={setTotalTime}
+      />
       <ImageMagnifier
         ref={imageRef}
         height="auto"
