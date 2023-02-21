@@ -59,17 +59,17 @@ export const Dropdown = ({
   };
 
   return tryAgain ? (
-    <ul
+    <div
       style={{
         display: "block",
         position: "absolute",
         left: dropdownPosition.x + "px",
         top: dropdownPosition.y + "px",
       }}
-      className={styles.dropdown}
+      className={styles.tryAgain}
     >
-      <li>Try again</li>
-    </ul>
+      Try again
+    </div>
   ) : (
     <ul
       style={{
