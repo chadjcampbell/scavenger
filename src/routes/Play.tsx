@@ -74,7 +74,15 @@ const Play = () => {
 
   return (
     <div onClick={(e) => handleDropdown(e)} className={styles.play}>
-      <Toast message={toastMessage} />
+      <Scoreboard
+        yodaFound={yodaFound}
+        landoFound={landoFound}
+        jabbaFound={jabbaFound}
+        running={running}
+        name={name}
+        setTotalTime={setTotalTime}
+      />
+      <Toast message={toastMessage} setToastMessage={setToastMessage} />
       {modalIsOpen && (
         <Modal
           setRunning={setRunning}
@@ -85,14 +93,7 @@ const Play = () => {
           totalTime={totalTime}
         />
       )}
-      <Scoreboard
-        yodaFound={yodaFound}
-        landoFound={landoFound}
-        jabbaFound={jabbaFound}
-        running={running}
-        name={name}
-        setTotalTime={setTotalTime}
-      />
+
       <ImageMagnifier
         ref={imageRef}
         height="auto"
