@@ -3,6 +3,7 @@ import Dropdown from "../components/Dropdown";
 import ImageMagnifier from "../components/ImageMagnifier";
 import Modal from "../components/Modal";
 import Scoreboard from "../components/Scoreboard";
+import Toast from "../components/Toast";
 import styles from "../styles/Play.module.css";
 
 const Play = () => {
@@ -25,6 +26,7 @@ const Play = () => {
   const [modalMessage, setModalMessage] = useState(
     "Enter your name for the leaderboard"
   );
+  const [toastMessage, setToastMessage] = useState("");
   const imageRef = useRef<HTMLImageElement>(null);
 
   //responsive location of characters based on image size
@@ -72,48 +74,7 @@ const Play = () => {
 
   return (
     <div onClick={(e) => handleDropdown(e)} className={styles.play}>
-      {yodaFound && (
-        <div
-          style={{
-            display: "block",
-            position: "absolute",
-            zIndex: 1,
-            left: yodaPosition.x + "px",
-            top: yodaPosition.y + "px",
-          }}
-          className={styles.found}
-        >
-          Yoda
-        </div>
-      )}
-      {landoFound && (
-        <div
-          style={{
-            display: "block",
-            position: "absolute",
-            zIndex: 1,
-            left: landoPosition.x + "px",
-            top: landoPosition.y + "px",
-          }}
-          className={styles.found}
-        >
-          Lando
-        </div>
-      )}
-      {jabbaFound && (
-        <div
-          style={{
-            display: "block",
-            position: "absolute",
-            zIndex: 1,
-            left: jabbaPosition.x + "px",
-            top: jabbaPosition.y + "px",
-          }}
-          className={styles.found}
-        >
-          Jabba
-        </div>
-      )}
+      <Toast message={toastMessage} />
       {modalIsOpen && (
         <Modal
           setRunning={setRunning}
@@ -150,7 +111,7 @@ const Play = () => {
         setYodaFound={setYodaFound}
         setJabbaFound={setJabbaFound}
         setLandoFound={setLandoFound}
-        setDropdownDisplay={setDropdownDisplay}
+        setToastMessage={setToastMessage}
       />
     </div>
   );

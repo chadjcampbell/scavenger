@@ -11,7 +11,7 @@ type DropdownProps = {
   setYodaFound: (arg0: boolean) => void;
   setJabbaFound: (arg0: boolean) => void;
   setLandoFound: (arg0: boolean) => void;
-  setDropdownDisplay: (arg0: boolean) => void;
+  setToastMessage: (arg0: string) => void;
 };
 export const Dropdown = ({
   dropdownDisplay,
@@ -22,55 +22,34 @@ export const Dropdown = ({
   setYodaFound,
   setJabbaFound,
   setLandoFound,
-  setDropdownDisplay,
+  setToastMessage,
 }: DropdownProps) => {
-  const [tryAgain, setTryAgain] = useState(false);
-
-  const displayTryAgain = () => {
-    setDropdownDisplay(true);
-    setTryAgain(true);
-
-    setTimeout(() => {
-      setDropdownDisplay(false);
-      setTryAgain(false);
-    }, 2000);
-  };
-
   const handleJabba = () => {
     if (closeEnough(jabbaPosition, dropdownPosition)) {
       setJabbaFound(true);
+      setToastMessage("You found Jabba!");
     } else {
-      displayTryAgain();
+      setToastMessage("Try Again");
     }
   };
   const handleLando = () => {
     if (closeEnough(landoPosition, dropdownPosition)) {
       setLandoFound(true);
+      setToastMessage("You found Lando!");
     } else {
-      displayTryAgain();
+      setToastMessage("Try Again");
     }
   };
   const handleYoda = () => {
     if (closeEnough(yodaPosition, dropdownPosition)) {
       setYodaFound(true);
+      setToastMessage("You found Yoda!");
     } else {
-      displayTryAgain();
+      setToastMessage("Try Again");
     }
   };
 
-  return tryAgain ? (
-    <div
-      style={{
-        display: "block",
-        position: "absolute",
-        left: dropdownPosition.x + "px",
-        top: dropdownPosition.y + "px",
-      }}
-      className={styles.tryAgain}
-    >
-      Try again
-    </div>
-  ) : (
+  return (
     <ul
       style={{
         display: dropdownDisplay ? "block" : "none",

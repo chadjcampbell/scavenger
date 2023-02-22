@@ -1,14 +1,7 @@
 import styles from "../styles/Leaderboard.module.css";
 import { doc, DocumentData, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
-import {
-  JSXElementConstructor,
-  ReactElement,
-  ReactFragment,
-  ReactPortal,
-  useEffect,
-  useState,
-} from "react";
+import { useEffect, useState } from "react";
 
 type userInfo = { name: string; totalTime: string };
 
