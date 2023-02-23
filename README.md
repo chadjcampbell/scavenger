@@ -75,8 +75,9 @@ Scavenger is a race against the clock to find three characters in the Star Wars-
 ### Built With
 
 - [![React][react.js]][react-url]
-- [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)][typescript-url]
 - [![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)][router-url]
+- [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)][typescript-url]
+- ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 - [![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)][vite-url]
 - [![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)][firebase-url]
 
@@ -92,7 +93,7 @@ To get a local copy up and running follow these simple example steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/chadjcampbell/tally-yo.git
+   git clone https://github.com/chadjcampbell/scavenger.git
    ```
 2. Install NPM packages
    ```sh
@@ -109,11 +110,12 @@ To get a local copy up and running follow these simple example steps.
 
 ## Features
 
-The items are fetched in the Collectibles route, from the Animal Crossing API that you can find (<a href="http://acnhapi.com/">here</a>). Most of the collectibles functionality and user auth and state is handled by a context provider, while smaller functionality like the styling, tooltips, modals, etc. are plain useState. The back end is done with BaaS Firebase. The styling was done with Chakra UI components, with some custom overrides where needed.
+The home page explains how the game works. On the play tab you can enter your name for the global loaderboard or leave it blank and play anonymously. On desktop hovering around the image will give you a magnifying glass view. As you find characters you receive a toast message up top and they are checked off the scoreboard component. The leaderboard and anonymous user count are stored on Firebase and are updated at the end of the game. You're then redirected to the leaderboard to see how you did!
 
 <div align="center">
-    <img src="public/tallyyoscreenshot1.png" alt="Screenshot" width="400" height="200">
-    <img src="public/tallyyoscreenshot3.png" alt="Screenshot" width="400" height="200">
+    <img src="public/scavSS2.png" alt="Screenshot" width="400" height="200">
+    <img src="public/scavSS3.png" alt="Screenshot" width="400" height="200">
+    <img src="public/scavSS4.png" alt="Screenshot" width="400" height="200">
 </div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -122,9 +124,9 @@ The items are fetched in the Collectibles route, from the Animal Crossing API th
 
 ## Roadmap
 
-- [ ] Different ways to earn coins
-- [ ] Trade collectibles
-- [ ] Testing
+- [ ] Add more images
+- [ ] Different characters based on difficutly setting
+- [ ] Better mobile view
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
