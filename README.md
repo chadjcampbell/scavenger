@@ -26,7 +26,7 @@
     <img src="public/magnifyingGlass.svg" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">tally-yo</h3>
+<h3 align="center">scavenger</h3>
 
   <p align="center">
     <br />
